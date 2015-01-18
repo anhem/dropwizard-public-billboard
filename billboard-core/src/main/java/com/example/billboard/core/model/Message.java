@@ -1,16 +1,16 @@
 package com.example.billboard.core.model;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 public class Message {
 
     private final int id;
-    private final Date created;
+    private final DateTime created;
     private final String subject;
     private final String text;
     private final String name;
 
-    public Message(int id, Date created, String subject, String text, String name) {
+    public Message(int id, DateTime created, String subject, String text, String name) {
         this.id = id;
         this.created = created;
         this.subject = subject;
@@ -22,7 +22,7 @@ public class Message {
         return id;
     }
 
-    public Date getCreated() {
+    public DateTime getCreated() {
         return created;
     }
 
