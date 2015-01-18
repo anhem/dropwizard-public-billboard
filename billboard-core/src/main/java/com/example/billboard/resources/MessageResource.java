@@ -1,6 +1,7 @@
 package com.example.billboard.resources;
 
 import com.example.billboard.api.MessageJson;
+import com.example.billboard.core.model.Message;
 import com.example.billboard.core.service.MessageService;
 
 import javax.ws.rs.GET;
@@ -24,7 +25,11 @@ public class MessageResource {
     @Path(value = "/list")
     @Produces(APPLICATION_JSON)
     public List<MessageJson> list() {
-        List<MessageJson> messages = new ArrayList<>();
-        return messages;
+        List<Message> messages = messageService.getAll();
+        List<MessageJson> messageJsons = new ArrayList<>();
+        for (Message message : messages) {
+            messageJsons.add(MessageJson.create(message));
+        }
+        return messageJsons;
     }
 }
