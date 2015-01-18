@@ -12,7 +12,7 @@ import java.util.List;
 @RegisterMapper(MessageMapper.class)
 public interface MessageDao {
 
-    @SqlUpdate("insert into message (created, subject, text, name) values (:created, :subject, :text, :name)")
+    @SqlUpdate("INSERT INTO message (created, subject, text, name) VALUES (:created, :subject, :text, :name)")
     void insert(@BindBean Message message);
 
     @SqlQuery("select * from message order by created desc")

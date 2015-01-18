@@ -14,7 +14,7 @@ public class MessageMapper implements ResultSetMapper<Message> {
     public Message map(int i, ResultSet r, StatementContext statementContext) throws SQLException {
         return new Message(
                 r.getInt("id"),
-                new DateTime(r.getDate("created")),
+                new DateTime(r.getTimestamp("created")),
                 r.getString("subject"),
                 r.getString("text"),
                 r.getString("name")

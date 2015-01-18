@@ -8,18 +8,19 @@ import org.skife.jdbi.v2.sqlobject.BindingAnnotation;
 
 import java.lang.annotation.*;
 
-@BindingAnnotation(MessageBinder.MessageBinderFactory.class)
+@BindingAnnotation(BindMessage.MessageBinderFactory.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.PARAMETER})
-
-public @interface MessageBinder {
+public @interface BindMessage {
 
     public static class MessageBinderFactory implements BinderFactory {
         public Binder build(Annotation annotation) {
-            return new Binder<MessageBinder, Message>() {
-                public void bind(SQLStatement q, MessageBinder bind, Message arg) {
-                    q.bind("ident", arg.getId());
-                    q.bind("nom", arg.getName());
+            return new Binder<BindMessage, Message>() {
+                public void bind(SQLStatement q, BindMessage bind, Message message) {
+                    q.bind("created", message.getCreated().toDate());
+                    q.bind("subject", message.getSubject());
+                    q.bind("text", message.getText());
+                    q.bind("name", message.getName());
                 }
             };
         }
