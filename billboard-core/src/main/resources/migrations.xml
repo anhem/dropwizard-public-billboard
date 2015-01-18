@@ -20,7 +20,7 @@
             <column name="text" type="varchar(4000)">
                 <constraints nullable="false"/>
             </column>
-            <column name="created" type="datetime">
+            <column name="created" type="timestamp">
                 <constraints nullable="false"/>
             </column>
         </createTable>
